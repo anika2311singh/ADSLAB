@@ -136,33 +136,68 @@ printf("NIL\n");
 }
 
 int main() {
-int arr[] = { 3, 6, 9, 2, 11, 1, 4 }, i;
+// int arr[] = { 3, 63, 9, 2, 46, 1, 4 }, i;
 skiplist list;
 skiplist_init(&list);
 
-printf("Insert:--------------------\n");
-for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++) {
-skiplist_insert(&list, arr[i], arr[i]);
-}
-skiplist_dump(&list);
+// printf("Insert:--------------------\n");
+// for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++) {
+// skiplist_insert(&list, arr[i], arr[i]);
+// }
 
-printf("Search:--------------------\n");
-int keys[] = { 3, 4, 7, 10, 111 };
 
-for (i = 0; i < sizeof(keys) / sizeof(keys[0]); i++) {
-snode *x = skiplist_search(&list, keys[i]);
-if (x) {
-printf("key = %d, value = %d\n", keys[i], x->value);
+// printf("Search:--------------------\n");
+// int keys[] = { 1, 4, 7, 10, 111 };
 
-} else {
-printf("key = %d, not fuound\n", keys[i]);
-}
-}
+// for (i = 0; i < sizeof(keys) / sizeof(keys[0]); i++) {
+// snode *x = skiplist_search(&list, keys[i]);
+// if (x) {
+// printf("key = %d, value = %d\n", keys[i], x->value);
 
-printf("Search:--------------------\n");
-skiplist_delete(&list, 3);
-skiplist_delete(&list, 9);
-skiplist_dump(&list);
+// } else {
+// printf("key = %d, not fuound\n", keys[i]);
+// }
+// }
+while(1){
+printf("1.insert\n2.delete\n3.search\n");
+int c,n;
+scanf("%d",&c);
+
+    switch(c){
+    case 1:
+    printf("enter no.:");
+    scanf("%d",&n);
+    skiplist_insert(&list, n, n);
+    skiplist_dump(&list);
+    break;
+    case 2:
+    printf("enter no.");
+    scanf("%d",&n);
+    skiplist_delete(&list, n);
+    skiplist_dump(&list);
+    break;
+    case 3:
+    printf("enter no.");
+    scanf("%d",&n);
+    snode *x = skiplist_search(&list, n);
+    if (x) {
+     printf("key = %d, value = %d\n", n, x->value);
+
+     } else {
+    printf("key = %d, not fuound\n", n);
+     }
+    break;
+    default:
+    printf(
+    "wrong choice");
+    break;
+    
+}}
+
+// printf("Search:--------------------\n");
+// skiplist_delete(&list, 3);
+// skiplist_delete(&list, 9);
+// skiplist_dump(&list);
 
 return 0;
 }
